@@ -7,7 +7,7 @@ function App() {
    const [calc, setCalc] = useState('')
   
    //we are defining what our operations are
-   const ops = ["/", "*", "+", "-", "."];
+  //  const ops = ["/", "*", "+", "-", "."];
    
   
    // this will handle our edge cases
@@ -84,13 +84,13 @@ function App() {
    
   
    return (
-     <div id="wrapper">
+     <Wrapper id="wrapper">
        
-         <div id="display">
+         <Display id="display">
            {calc || 0}
-         </div>
-         <div id="operators">
-           <button 
+         </Display>
+         <Operators id="operators">
+           <Ops 
              id="add"
              class="ops"
              onClick={() => {
@@ -98,8 +98,8 @@ function App() {
              }}
              >
              +
-           </button>
-            <button 
+           </Ops>
+            <Ops 
              id="subtract"
              class="ops"
              onClick={() => {
@@ -107,8 +107,8 @@ function App() {
              }}
              >
              -
-           </button>
-            <button 
+           </Ops>
+            <Ops 
              id="multiply"
              class="ops"
              onClick={() => {
@@ -116,8 +116,8 @@ function App() {
              }}
              >
              *
-           </button>
-            <button 
+           </Ops>
+            <Ops 
              id="divide"
              class="ops"
              onClick={() => {
@@ -125,24 +125,24 @@ function App() {
              }}
              >
              /
-           </button>
-            <button 
+           </Ops>
+            <Ops 
              id="delete"
              class="ops"
              onClick={deleteLast}
              >
              DEL
-           </button>
-            <button 
+           </Ops>
+            <Ops 
              id="clear"
              class="ops"
              onClick={clearAll}
              >
              AC
-           </button>
-         </div>
-         <div id="digits">
-            <button 
+           </Ops>
+         </Operators>
+         <Digits id="digits">
+            <Digit 
              id="one"
              className="digit"
              onClick={() => {
@@ -150,7 +150,8 @@ function App() {
              }}
              >
              1
-           </button> <button 
+           </Digit>
+           <Digit 
              id="two"
              className="digit"
              onClick={() => {
@@ -158,8 +159,8 @@ function App() {
              }}
              >
              2
-           </button>
-            <button 
+           </Digit>
+            <Digit 
              id="three"
              className="digit"
              onClick={() => {
@@ -167,8 +168,8 @@ function App() {
              }}
              >
              3
-           </button>
-            <button 
+           </Digit>
+            <Digit 
              id="four"
              className="digit"
              onClick={() => {
@@ -176,8 +177,8 @@ function App() {
              }}
              >
              4
-           </button>
-            <button 
+           </Digit>
+            <Digit 
              id="five"
              className="digit"
              onClick={() => {
@@ -185,8 +186,8 @@ function App() {
              }}
              >
              5
-           </button>
-            <button 
+           </Digit>
+            <Digit 
              id="six"
              className="digit"
              onClick={() => {
@@ -194,8 +195,8 @@ function App() {
              }}
              >
              6
-           </button>
-            <button 
+           </Digit>
+            <Digit 
              id="seven"
              className="digit"
              onClick={() => {
@@ -203,8 +204,8 @@ function App() {
              }}
              >
              7
-           </button>
-            <button 
+           </Digit>
+            <Digit 
              id="eight"
              className="digit"
              onClick={() => {
@@ -212,8 +213,8 @@ function App() {
              }}
              >
              8
-           </button>
-            <button 
+           </Digit>
+            <Digit 
              id="nine"
              className="digit"
              onClick={() => {
@@ -221,8 +222,8 @@ function App() {
              }}
              >
              9
-           </button>
-            <button 
+           </Digit>
+            <Digit 
              id="zero"
              className="digit"
              onClick={() => {
@@ -230,15 +231,15 @@ function App() {
              }}
              >
              0
-           </button>
-            <button 
+           </Digit>
+            <Digit 
              id="equals"
              className="digit"
              onClick={calculate}
              >
              =
-           </button>
-           <button 
+           </Digit>
+           <Digit 
              id="decimal"
              className="digit"
              onClick={() => {
@@ -246,10 +247,84 @@ function App() {
              }}
              >
              .
-           </button>
-         </div>
+           </Digit>
+         </Digits>
       
-     </div>
+     </Wrapper>
    )
 }
+
+const Wrapper = styled.div`
+  height: auto;
+  width: auto;
+  padding: 30px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+   background-color: #3d405b;
+`
+
+const Display = styled.div`
+  display: flex;
+  font-size: 30px;
+  color: #e07a5f;
+  justify-content: flex-end;
+  width: 80%;
+  height: 20px;
+  align-self: center;
+  background: #f4f1de;
+  padding: 20px;
+  border-radius: 10px;
+`
+const Operators = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px; 
+`
+const Ops = styled.button`
+  background-color: transparent;
+  color: #f2cc8f;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 5px;
+  border-width: 0px;
+  transition: 200ms;
+  &:hover {
+    color: #81b29a;
+  }
+`
+const Digits = styled.div`
+  flex-wrap: wrap;
+  width: 310px;
+  height: 310px;
+/*   background-color: #f5cac3; */
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 20px;
+`
+const Digit = styled.button`
+  height: 70px;
+  width: 70px;
+  margin:10px;
+  background-color: #f4f1de;
+  border: 0px;
+  border-radius: 10px;
+  font-weight: 700;
+  color: #81b29a;
+  font-size: 20px;
+  transition: 200ms;
+  &:hover {
+    background-color: #f2cc8f;
+  }
+  &:focus {
+    background-color: #81b29a;
+    color: #f2cc8f;
+  }
+`
 export default App;
